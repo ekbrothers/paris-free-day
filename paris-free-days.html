@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paris Free Days -- Sept 19 & 20, 2026</title>
+<style>
+  :root {
+    --cream: #F7F4EE;
+    --ink: #1A1A18;
+    --muted: #5C5C58;
+    --rule: #D8D4CA;
+    --accent: #8B4A2B;
+    --accent-light: #F2E8E2;
+    --blue: #1A3A5C;
+    --blue-light: #E6EEF6;
+    --green: #2A4A2E;
+    --green-light: #E8F0E8;
+    --warn: #5C3A1A;
+    --warn-light: #F5EDE2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.75;
+    padding: 2rem 1rem 4rem;
+  }
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .site-header {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 1.5rem 0 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  h1 {
+    font-size: 2.4rem;
+    font-weight: normal;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* Nav */
+  .toc {
+    border: 1px solid var(--rule);
+    background: white;
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .toc-title {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .toc ul { list-style: none; }
+  .toc li { margin-bottom: 0.3rem; }
+  .toc a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Section headings */
+  h2 {
+    font-size: 1.6rem;
+    font-weight: normal;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Day blocks */
+  .day-label {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: white;
+    background: var(--ink);
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+  }
+  .day-title {
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Stops */
+  .stop {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0 1.25rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .stop:last-of-type { border-bottom: 1px solid var(--rule); }
+  .stop-time {
+    font-family: 'Courier New', monospace;
+    font-size: 0.82rem;
+    color: var(--muted);
+    padding-top: 3px;
+    letter-spacing: 0.04em;
+  }
+  .stop-body {}
+  .stop-name {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .stop-name a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stop-name a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+  .stop-desc {
+    font-size: 0.93rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 0.6rem;
+  }
+
+  /* Transport pill */
+  .transport {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    padding: 3px 9px;
+    border-radius: 20px;
+    margin-top: 4px;
+  }
+  .transport-icon { font-size: 1rem; }
+
+  /* Badges */
+  .badge {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .badge-priority { background: var(--accent); color: white; }
+  .badge-optional { background: var(--rule); color: var(--muted); }
+  .badge-tour { background: var(--blue); color: white; }
+
+  /* Callout boxes */
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-light);
+    padding: 0.9rem 1.1rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.9rem;
+    color: var(--warn);
+    margin: 1rem 0;
+    line-height: 1.6;
+  }
+  .callout.info {
+    border-left-color: var(--blue);
+    background: var(--blue-light);
+    color: var(--blue);
+  }
+  .callout.success {
+    border-left-color: var(--green);
+    background: var(--green-light);
+    color: var(--green);
+  }
+  .callout strong { display: block; margin-bottom: 0.25rem; font-family: 'Courier New', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* Must-know grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1rem 1.1rem;
+  }
+  .card-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+  .card h4 {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .card p {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .card a { color: var(--accent); }
+
+  /* Gotcha list */
+  .gotcha-list { list-style: none; margin: 1rem 0; }
+  .gotcha-list li {
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--rule);
+    font-size: 0.93rem;
+    color: var(--muted);
+    line-height: 1.6;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  .gotcha-list li:last-child { border-bottom: 1px solid var(--rule); }
+  .gotcha-list li::before {
+    content: "!";
+    position: absolute;
+    left: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: bold;
+  }
+  .gotcha-list strong { color: var(--ink); }
+
+  /* Booking links section */
+  .booking-links { margin: 1rem 0; }
+  .booking-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--rule);
+    font-size: 0.93rem;
+  }
+  .booking-link:last-child { border-bottom: 1px solid var(--rule); }
+  .booking-link-name { color: var(--ink); }
+  .booking-link-name span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+  .booking-link a {
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    padding: 3px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .booking-link a:hover { background: var(--accent); color: white; }
+
+  /* Footer */
+  footer {
+    margin-top: 4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 540px) {
+    h1 { font-size: 1.75rem; }
+    .stop { grid-template-columns: 1fr; gap: 0.25rem; }
+    .stop-time { padding-top: 0; }
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .toc { display: none; }
+    h2 { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header">
+    <div class="eyebrow">Trafalgar Tour -- Paris Leg</div>
+    <h1>Your Free Days in Paris</h1>
+    <p class="subtitle">Friday, September 19 &amp; Saturday, September 20, 2026 &mdash; Breakfast included both days</p>
+  </header>
+
+  <nav class="toc" aria-label="Page contents">
+    <div class="toc-title">Contents</div>
+    <ul>
+      <li><a href="#must-knows">Before you go -- must-knows</a></li>
+      <li><a href="#day4">Day 4 (Sept 19) -- The museums and Left Bank</a></li>
+      <li><a href="#day5">Day 5 (Sept 20) -- Montmartre morning, then tour</a></li>
+      <li><a href="#day6">Day 6 (Sept 21) -- Final morning + farewell dinner</a></li>
+      <li><a href="#getting-around">Getting around Paris</a></li>
+      <li><a href="#gotchas">Gotchas to avoid</a></li>
+      <li><a href="#booking">All booking links in one place</a></li>
+    </ul>
+  </nav>
+
+  <!-- MUST KNOWS -->
+  <section id="must-knows">
+    <h2>Before you go -- must-knows</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🎟</div>
+        <h4>Book tickets before you leave home</h4>
+        <p>The Louvre, Musee d'Orsay, and Musee de l'Orangerie all require timed-entry tickets. Walk-up lines at the Louvre can exceed an hour. Book online at least 2 weeks in advance.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💳</div>
+        <h4>Get a Navigo Easy card</h4>
+        <p>Paper metro tickets no longer exist as of 2025. Get a Navigo Easy card at any metro station for &euro;2, then load single rides at &euro;2.55 each. Every attraction on this itinerary is in Zone 1.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🕘</div>
+        <h4>Arrive at museums early</h4>
+        <p>The Orangerie and Louvre are best before 10am. Tour groups flood in mid-morning. Arriving at opening gets you the famous rooms in relative quiet.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👟</div>
+        <h4>Wear very comfortable shoes</h4>
+        <p>The Louvre alone has miles of galleries. Montmartre is cobblestoned and hilly. Expect 6--10 miles of walking across Day 4 and Day 5.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h4>Download Google Maps offline</h4>
+        <p>Download the Paris map area before your trip. Metro navigation is much easier with a visual map, especially when switching lines underground.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👜</div>
+        <h4>Watch for pickpockets</h4>
+        <p>Metro Lines 1 and 4 and busy stations like Chatelet are common pickpocket spots. Keep bags zipped and in front of you. This is common and manageable with awareness.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 4 -->
+  <section id="day4">
+    <h2>Day 4 &mdash; Friday, September 19</h2>
+    <div class="day-label">Museums + Left Bank</div>
+    <p class="day-title">A full day along the Seine -- three world-class museums, a riverside walk, and dinner at your own pace.</p>
+
+    <div class="stop">
+      <div class="stop-time">9:00 am</div>
+      <div class="stop-body">
+        <div class="stop-name">
+          <a href="https://www.musee-orangerie.fr/en/visit-orangerie" target="_blank" rel="noopener">Musee de l'Orangerie</a>
+          <span class="badge badge-priority">Priority</span>
+        </div>
+        <p class="stop-desc">Start here. The two oval rooms of Monet's Water Lilies are among the most peaceful experiences in Paris, and they're quietest at opening. Plan 1.5 hours. The museum is compact and unhurried -- perfect for a relaxed pace. Closed Tuesdays.</p>
+        <div class="transport"><span class="transport-icon">🚇</span> Metro Line 1 to Concorde, 3-min walk into Tuileries Garden</div>
+        <div style="margin-top: 6px;"><div class="transport"><span class="transport-icon">🚶</span> From your hotel: depends on location; Concorde is central</div></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-time">10:30 am</div>
+      <div class="stop-body">
+        <div class="stop-name">Tuileries Garden walk</div>
+        <p class="stop-desc">Exit the Orangerie and walk east through the Tuileries toward the Louvre -- about a 10-minute stroll. Fountains, open sky, and a good spot to grab a pastry or coffee from the garden kiosk before the museum. No ticket needed, just walk through.</p>
+        <div class="transport"><span class="transport-icon">🚶</span> On foot, ~10 min from Orangerie to Louvre entrance</div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-time">11:00 am</div>
+      <div class="stop-body">
+        <div class="stop-name">
+          <a href="https://www.louvre.fr/en/visit" target="_blank" rel="noopener">The Louvre</a>
+          <span class="badge badge-priority">Priority</span>
+        </div>
+        <p class="stop-desc">Budget 2.5--3 hours for highlights at a relaxed pace: the Mona Lisa, Venus de Milo, and Winged Victory of Samothrace. Start with these when the museum opens to mid-morning crowds, then explore at your own pace. On Fridays, the Louvre stays open until 9:45pm -- so there is no rush to leave by a hard deadline. Enter via the Passage Richelieu (not the Pyramid) if you already have a ticket -- it is significantly faster.</p>
+        <div class="transport"><span class="transport-icon">🚇</span> Metro Line 1 to Louvre-Rivoli (already nearby from Tuileries walk)</div>
+        <div style="margin-top: 6px;"><div class="transport"><span class="transport-icon">🚶</span> Already on foot from Tuileries Garden</div></div>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <strong>Louvre tip</strong>
+      The museum is enormous -- do not try to see it all. Pick 3--4 rooms and enjoy them properly. A rushed 5-hour sprint will leave you exhausted. The Richelieu wing (French sculpture and Northern European painting) is often less crowded than the Denon wing where the Mona Lisa lives.
+    </div>
+
+    <div class="stop">
+      <div class="stop-time">2:00 pm</div>
+      <div class="stop-body">
+        <div class="stop-name">Lunch near Saint-Germain-des-Pres</div>
+        <p class="stop-desc">Cross Pont des Arts (the "love lock bridge") over the Seine to the Left Bank. The streets around Rue de Buci and Boulevard Saint-Germain are full of excellent, unfussy cafes. Order whatever looks good -- there is no wrong answer in this neighborhood. Plan 45--60 minutes.</p>
+        <div class="transport"><span class="transport-icon">🚶</span> On foot across Pont des Arts, ~12 min from Louvre exit</div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-time">3:30 pm</div>
+      <div class="stop-body">
+        <div class="stop-name">
+          <a href="https://www.musee-orsay.fr/en/visit" target="_blank" rel="noopener">Musee d'Orsay</a>
+          <span class="badge badge-priority">Priority</span>
+        </div>
+        <p class="stop-desc">A 15-minute walk west along the Left Bank riverfront from Saint-Germain. Friday afternoons are calmer than mornings here. Budget 1.5--2 hours for the Impressionist collection on the top floor: Monet, Renoir, Degas, Van Gogh. The building itself -- a converted 1900 railway station -- is worth admiring. Open until 6pm (9:45pm on Thursdays).</p>
+        <div class="transport"><span class="transport-icon">🚶</span> On foot ~15 min west along the Seine from Saint-Germain lunch area</div>
+        <div style="margin-top: 6px;"><div class="transport"><span class="transport-icon">🚇</span> Metro Line 12 to Solferino, or RER C to Musee d'Orsay (1 stop)</div></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-time">6:00 pm+</div>
+      <div class="stop-body">
+        <div class="stop-name">Evening at leisure</div>
+        <p class="stop-desc">Dinner on the Left Bank at your own pace. A walk back along the Seine at dusk, with the city lighting up, is one of the best free things Paris offers. No agenda -- rest up for Montmartre tomorrow.</p>
+        <div class="transport"><span class="transport-icon">🚇</span> RER C or Metro Line 12 back toward central Paris / your hotel</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Booking required for Day 4</strong>
+      Buy timed-entry tickets for the Orangerie, Louvre, and Orsay before your trip. See the booking links section at the bottom of this page.
+    </div>
+  </section>
+
+  <!-- DAY 5 -->
+  <section id="day5">
+    <h2>Day 5 &mdash; Saturday, September 20</h2>
+    <div class="day-label">Montmartre morning + Tour afternoon</div>
+    <p class="day-title">Wander the bohemian hilltop village that inspired generations of painters, then meet the tour for Giverny and the Seine cruise.</p>
+
+    <div class="callout info">
+      <strong>Important -- confirm tour pick-up time</strong>
+      The Giverny and Seine River Cruise excursions are through the Trafalgar tour. Check with your Travel Director for the exact departure time. That tells you how much morning time you actually have. The morning plan below assumes you have until at least noon.
+    </div>
+
+    <div class="stop">
+      <div class="stop-time">9:00 am</div>
+      <div class="stop-body">
+        <div class="stop-name">
+          <a href="https://www.sacre-coeur-montmartre.com/english/" target="_blank" rel="noopener">Montmartre neighborhood</a>
+          <span class="badge badge-priority">Priority</span>
+        </div>
+        <p class="stop-desc">Take the Metro to Abbesses station (Line 12) -- it puts you right in the heart of Montmartre without a long climb. Wander the cobblestone streets, peek into galleries, and find a cafe for a second coffee. This neighborhood rewards a slow wander far more than a checklist approach.</p>
+        <div class="transport"><span class="transport-icon">🚇</span> Metro Line 12 to Abbesses -- direct, ~15--20 min from central Paris</div>
+        <div style="margin-top: 6px;"><div class="transport"><span class="transport-icon">🚇</span> Or Line 2 to Anvers, then walk up or take the free funicular</div></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-time">10:00 am</div>
+      <div class="stop-body">
+        <div class="stop-name">
+          <a href="https://www.sacre-coeur-montmartre.com/english/" target="_blank" rel="noopener">Sacre Coeur Basilica</a>
+          <span class="badge badge-priority">Priority</span>
+        </div>
+        <p class="stop-desc">Free entry. The view from the front steps over Paris is one of the best in the city. Arrive by 10am on a Saturday to beat the largest tour groups. The interior is beautiful -- white stone, mosaics, candles. Plan 30--45 minutes. Walk back down the hill through the vineyard streets afterward.</p>
+        <div class="transport"><span class="transport-icon">🚡</span> Free funicular from the bottom of the hill (uses a regular metro ticket)</div>
+        <div style="margin-top: 6px;"><div class="transport"><span class="transport-icon">🚶</span> Or walk up the Rue Foyatier steps -- steeper but scenic</div></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-time">11:30 am</div>
+      <div class="stop-body">
+        <div class="stop-name">
+          <a href="https://www.notredamedeparis.fr/en/" target="_blank" rel="noopener">Notre Dame Cathedral</a>
+          <span class="badge badge-priority">Priority</span>
+        </div>
+        <p class="stop-desc">Fully restored and reopened after the 2019 fire. Take the Metro from Montmartre down to the Ile de la Cite. The exterior alone is breathtaking -- but go inside if time allows. A timed reservation is now required; book in advance on the official site. Plan 45--60 minutes. Entry is free.</p>
+        <div class="transport"><span class="transport-icon">🚇</span> Metro Line 4 from Chateau Rouge (Montmartre) to Cite -- about 13 min, direct</div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-time">1:00 pm</div>
+      <div class="stop-body">
+        <div class="stop-name">Lunch on Ile Saint-Louis</div>
+        <p class="stop-desc">Cross the small footbridge from Notre Dame to Ile Saint-Louis -- a quieter, charming island with excellent cafes and the legendary Berthillon ice cream shop. A good midday rest before tour activities begin.</p>
+        <div class="transport"><span class="transport-icon">🚶</span> On foot from Notre Dame, 2-min walk across Pont Saint-Louis</div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-time">Afternoon</div>
+      <div class="stop-body">
+        <div class="stop-name">Giverny + Seine River Cruise <span class="badge badge-tour">Trafalgar tour</span></div>
+        <p class="stop-desc">Both are already included through the Trafalgar tour. The Giverny excursion visits Monet's actual home and gardens -- the same gardens that inspired the Water Lilies you saw at the Orangerie on Day 4. The Seine cruise offers the monuments of Paris from the water at dusk.</p>
+        <div class="transport"><span class="transport-icon">🚌</span> Tour transport provided -- confirm pick-up point and time with your Travel Director</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 6 -->
+  <section id="day6">
+    <h2>Day 6 &mdash; Sunday, September 21</h2>
+    <div class="day-label">Final morning + farewell dinner</div>
+    <p class="day-title">A last unhurried morning, then an elegant farewell dinner to close out Paris.</p>
+
+    <div class="stop">
+      <div class="stop-time">Morning</div>
+      <div class="stop-body">
+        <div class="stop-name">
+          <a href="https://ticket.toureiffel.paris/en/home" target="_blank" rel="noopener">Eiffel Tower</a>
+          <span class="badge badge-optional">If time allows</span>
+        </div>
+        <p class="stop-desc">The tour's Day 3 sightseeing already includes a photo stop at the Eiffel Tower up close. But if you want to go up, Sunday morning is a good window before the farewell dinner. Book summit tickets well in advance -- same-day tickets are nearly impossible to secure. The Champ-de-Mars lawn below is also a lovely place to sit and take it in without the climb.</p>
+        <div class="transport"><span class="transport-icon">🚇</span> Metro Line 6 to Bir-Hakeim, or RER C to Champ de Mars -- Tour Eiffel</div>
+        <div style="margin-top: 6px;"><div class="transport"><span class="transport-icon">⏱</span> ~10--15 min from most central Paris hotels</div></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-time">Evening</div>
+      <div class="stop-body">
+        <div class="stop-name">Farewell dinner <span class="badge badge-tour">Trafalgar tour</span></div>
+        <p class="stop-desc">Included with the tour. Per the itinerary, the evening includes a photo stop at the Arc de Triomphe en route to dinner. A memorable final night in Paris.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GETTING AROUND -->
+  <section id="getting-around">
+    <h2>Getting around Paris</h2>
+
+    <h3>The Metro is your best friend</h3>
+    <p style="color: var(--muted); font-size: 0.93rem; margin-bottom: 1rem;">Every attraction on this itinerary is in Zone 1. A single ride costs &euro;2.55 and gets you anywhere in central Paris. The Metro runs from about 5:30am to 1am (2:15am on Friday and Saturday nights).</p>
+
+    <div class="callout success">
+      <strong>Most important tip</strong>
+      Get a Navigo Easy card (&euro;2 one-time) at any metro station ticket machine. Paper tickets no longer exist. Load single rides onto the card. If you are staying all week, a weekly Navigo pass (Monday--Sunday) may be better value if it covers your dates.
+    </div>
+
+    <h3>Key lines for this itinerary</h3>
+    <ul style="color: var(--muted); font-size: 0.93rem; line-height: 2; margin-left: 1.25rem; margin-bottom: 1rem;">
+      <li><strong style="color: var(--ink);">Line 1 (east-west):</strong> Louvre-Rivoli, Concorde (Orangerie / Tuileries)</li>
+      <li><strong style="color: var(--ink);">Line 12:</strong> Abbesses (Montmartre), Solferino (near Orsay)</li>
+      <li><strong style="color: var(--ink);">Line 4:</strong> Cite (Notre Dame), Chateau Rouge (Montmartre)</li>
+      <li><strong style="color: var(--ink);">Line 6:</strong> Bir-Hakeim (Eiffel Tower)</li>
+      <li><strong style="color: var(--ink);">RER C:</strong> Musee d'Orsay stop (direct), Champ de Mars-Tour Eiffel</li>
+    </ul>
+
+    <h3>Walking is often faster than you expect</h3>
+    <p style="color: var(--muted); font-size: 0.93rem; margin-bottom: 0.5rem;">The cluster of museums on Day 4 is very walkable:</p>
+    <ul style="color: var(--muted); font-size: 0.93rem; line-height: 2; margin-left: 1.25rem;">
+      <li>Orangerie to Louvre on foot: ~10 min through Tuileries Garden</li>
+      <li>Louvre to Musee d'Orsay on foot: ~20 min along the river</li>
+      <li>Notre Dame to Montmartre by Metro: ~13 min (Line 4)</li>
+    </ul>
+
+    <h3>Taxis and Uber</h3>
+    <p style="color: var(--muted); font-size: 0.93rem;">Both work in Paris. Uber is called Uber and functions the same as home. Useful late at night or if your feet give out. Central Paris traffic is often slow, so the Metro is usually faster for short trips during the day.</p>
+  </section>
+
+  <!-- GOTCHAS -->
+  <section id="gotchas">
+    <h2>Gotchas to avoid</h2>
+    <ul class="gotcha-list">
+      <li><strong>The Orangerie is closed Tuesdays</strong> -- not relevant for your dates, but good to know in case plans shift.</li>
+      <li><strong>The Louvre is closed Tuesdays</strong> -- same note. Your visit is on a Friday, which is ideal (late opening until 9:45pm).</li>
+      <li><strong>Notre Dame now requires a timed reservation</strong> -- entry is free but you must book a time slot on the official website in advance. Walk-up entry is not guaranteed.</li>
+      <li><strong>The Eiffel Tower summit sells out weeks ahead</strong> -- if you want to go up, book online now. Same-day tickets are essentially unavailable in September.</li>
+      <li><strong>The Passage Richelieu at the Louvre is faster than the Pyramid</strong> -- use it if you already have a ticket. The Pyramid entrance has long security queues even with a reservation.</li>
+      <li><strong>Versailles is crossed off for a reason</strong> -- you noted "no Versailles" on your list. The Day 6 farewell dinner itinerary mentions Versailles as an optional add-on; feel free to skip it entirely.</li>
+      <li><strong>Montmartre on a Saturday morning fills up fast</strong> -- aim to be at Sacre Coeur by 10am. By 11am the steps are packed with tour groups.</li>
+      <li><strong>Giverny scheduling note:</strong> the tour documents say the Giverny excursion "may be offered on Day 5 or Day 6 depending on the day of the week." Confirm the exact day with your Travel Director so Day 5's morning plan is calibrated correctly.</li>
+      <li><strong>Paper metro tickets no longer exist</strong> -- any old Paris travel advice referencing a "carnet of 10" or paper tickets is outdated. Get the Navigo Easy card.</li>
+    </ul>
+  </section>
+
+  <!-- BOOKING LINKS -->
+  <section id="booking">
+    <h2>All booking links in one place</h2>
+    <p style="color: var(--muted); font-size: 0.93rem; margin-bottom: 1rem;">Book all tickets before leaving home. Timed-entry windows fill up, especially for the Louvre.</p>
+
+    <div class="booking-links">
+      <div class="booking-link">
+        <div class="booking-link-name">
+          Musee de l'Orangerie
+          <span>Wed--Mon, 9am--6pm &bull; Closed Tuesdays &bull; ~&euro;12.50</span>
+        </div>
+        <a href="https://www.musee-orangerie.fr/en/visit-orangerie" target="_blank" rel="noopener">Book tickets &rarr;</a>
+      </div>
+      <div class="booking-link">
+        <div class="booking-link-name">
+          The Louvre
+          <span>Daily except Tues, 9am--6pm (Fri until 9:45pm) &bull; ~&euro;22</span>
+        </div>
+        <a href="https://www.louvre.fr/en/visit/hours-admission" target="_blank" rel="noopener">Book tickets &rarr;</a>
+      </div>
+      <div class="booking-link">
+        <div class="booking-link-name">
+          Musee d'Orsay
+          <span>Tues--Sun, 9:30am--6pm (Thurs until 9:45pm) &bull; ~&euro;16</span>
+        </div>
+        <a href="https://www.musee-orsay.fr/en/visit" target="_blank" rel="noopener">Book tickets &rarr;</a>
+      </div>
+      <div class="booking-link">
+        <div class="booking-link-name">
+          Notre Dame Cathedral
+          <span>Free entry, timed reservation required</span>
+        </div>
+        <a href="https://www.notredamedeparis.fr/en/" target="_blank" rel="noopener">Reserve time slot &rarr;</a>
+      </div>
+      <div class="booking-link">
+        <div class="booking-link-name">
+          Eiffel Tower (if desired)
+          <span>Daily &bull; Summit from ~&euro;35 &bull; Book far in advance</span>
+        </div>
+        <a href="https://ticket.toureiffel.paris/en/home" target="_blank" rel="noopener">Book tickets &rarr;</a>
+      </div>
+      <div class="booking-link">
+        <div class="booking-link-name">
+          Giverny + Seine River Cruise
+          <span>Already included through Trafalgar -- confirm details with tour</span>
+        </div>
+        <a href="https://www.trafalgar.com" target="_blank" rel="noopener">Trafalgar site &rarr;</a>
+      </div>
+    </div>
+
+    <div class="callout success" style="margin-top: 1.5rem;">
+      <strong>Paris Museum Pass -- worth considering</strong>
+      A 2-day Paris Museum Pass covers the Louvre, Orsay, and Orangerie with no separate timed-entry fees and skip-the-line access. It costs around &euro;62 for 2 days. If you are visiting all three museums, it can save both money and queuing time. Check current pricing at <a href="https://en.parismuseumpass.com" target="_blank" rel="noopener" style="color: var(--green);">parismuseumpass.com</a>.
+    </div>
+  </section>
+
+  <footer>
+    <p>Prepared for September 2026 Trafalgar Tour -- Paris leg &bull; Last updated June 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>
